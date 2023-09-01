@@ -1,0 +1,17 @@
+{% extends 'social/layout.html' %}
+{% block content %}
+
+<!-- Profile -->
+<div class="profile">
+	<img src="{{ user.profile.image.url }}">
+	<h2>@{{ user.username }}</h2>
+    <form method="post" enctype="multipart/form-data" class="update-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div style="display: flex; justify-content: center;">
+            <button type="submit" class="follow-button">Actualizar Perfil</button>
+        </div>
+    </form>
+</div>
+<!-- block super -->
+{% endblock %}

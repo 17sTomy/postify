@@ -1,0 +1,327 @@
+body{
+  background-color: #b35dda;
+	font-size: 62.5%;
+	font-family: 'Varela Round', Helvetica, Arial, serif;
+}
+
+h5{
+	font-size: 1rem;
+	margin-bottom: 0;
+
+}
+
+p{
+	font-size: 1rem;
+}
+
+button{
+	font-size: 1rem;
+	color: white;
+	padding: 0.4rem 1.4rem;
+	border: none;
+	background: #b35dda;
+	 border-radius: 4px;
+	cursor: pointer;
+
+}
+
+img{
+	object-fit: cover;
+}
+
+/* Nav bar */
+.main-head{
+	background: white;
+	color: black;
+}
+
+nav.main{
+	min-height: 7vh;
+	display: flex;
+	width: 65%;
+	margin: auto; 
+	align-items: center;
+	padding: 0.5rem;
+  justify-content: space-between;
+}
+
+#logo, .greetings, nav.main ul{
+  width: 33%;
+}
+
+nav.main ul{
+	display: flex;
+  box-sizing: border-box;
+	align-items: center;
+  justify-content: end;
+	list-style: none;
+}
+
+nav.main ul li {
+  margin: 0 1.5rem;
+}
+
+/* -----*/
+
+a{
+	font-size: .93rem;
+	text-decoration: none;
+	color: black;
+}
+
+.helpers-info{
+  color: #b35dda;
+}
+
+.helpers-info:hover {
+  opacity: .8;
+}
+
+.main{
+	background: white;
+	width: 65%;
+	margin: 5% auto;
+	border-radius: 4px;
+	padding-bottom: 20px;
+}
+
+/* NAVIGATION BAR */
+.second-nav{
+	display: flex;
+	padding: 15px 30px;
+}
+
+.second-nav .feed{
+	flex: 1 1 30px;
+}
+
+.second-nav .feed:hover{
+	flex: 1 1 30px;
+	color: #b35dda;
+}
+
+.second-nav .profile{
+	flex: 1 1 50px;
+}
+
+.second-nav .profile:hover{
+	color: #b35dda;
+}
+
+.second-nav .new{
+	flex: 6 1 5rem;
+	text-align: right;
+	text-transform: uppercase;
+  color: #b35dda;
+}
+
+.second-nav .new:hover{
+	opacity: .8;
+}
+
+/* Article */
+
+article{
+	width: 93%;
+	margin: auto;
+	padding: 40px 0;
+	border-bottom: 2px solid #ECEEEF;
+}
+
+.username{
+	margin-bottom: .2rem;
+}
+
+.username a{
+	font-size: 1.1rem;
+}
+
+.container-article{
+  display: flex;
+}
+
+.container-article img{
+  height: 68px;
+  width: 68px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+article:last-child {
+  border-bottom: 0;
+}
+
+time {
+  font-size: .8rem;
+  opacity: .7;
+}
+
+.post{
+	font-size: .94rem;
+}
+
+/* PROFILE */
+.profile{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.profile img{
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+  border-radius: 50%;
+  margin: 20px;
+}
+.profile h2{
+	margin-top: -10px;
+	font-size: 1.3rem;
+}
+
+/* Followers / Following / Post */
+.follow{
+	display: flex;
+	width: 95%;
+	justify-content: space-around;
+	margin: 30px auto;
+	text-align: center;
+	border-bottom: 2px solid #ECEEEF;
+	padding-bottom: 20px;
+}
+
+.like, .liked {
+  margin-left: auto; 
+  margin-top: 10px;
+}
+
+.like i, .liked i{
+  color: #f00000;
+}
+
+
+/*Form Elements*/
+form {
+    margin: 0;
+    padding: 40px;
+    font-size: 1rem;
+}
+input {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #D3D8DC;
+  outline: 0;
+  background: #fff;
+  padding: 20px 0 4px;
+  margin: 0 0 20px;
+  color: #b35dda;
+}
+
+input:focus {
+  border-color: #b35dda;
+  color: #2C3238;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  border: 0;
+  border-bottom: 2px solid #D3D8DC;
+  outline: 0;
+  background: #fff;
+  padding: 20px 0 4px;
+  margin: 0 0 20px;
+  color: #b35dda;
+}
+
+textarea:focus {
+  border-color: #b35dda;
+  color: #2C3238;
+}
+
+button#submit {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background: #b35dda;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  transition: .35s linear;
+}
+
+button#submit:hover {
+  opacity: .9;
+}
+
+/*Notifications*/
+.notification {
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.success {
+  background: #43DC7E;
+  color: white;
+}
+
+.error {
+  background: #AB3444;
+  color: white;
+  margin-bottom: 20px;
+}
+
+
+/*Footer*/
+footer{
+  color: white;
+  text-align: center;
+  font-size: .875em;
+  margin: 40px 0;
+}
+
+footer p {
+  opacity: .8;
+}
+
+footer p a {
+  color: white;
+}
+
+img.profile{
+  height: 80px;
+  width: 80px;
+  margin-right: 10px;
+  margin-left: 30px;
+  border-radius: 50%;
+}
+
+
+.follow-button{
+  color: white;
+}
+
+/*Media Queries*/
+@media (max-width: 1200px) {
+  .main {
+    width: 95%;
+  }
+
+  nav.main {
+    width: 90%;
+  }
+}
+
+.update-form {
+  color: white;
+}
+
+.update-form a{
+  display: none;
+}
+
+.update-form p{
+  margin-top: -80px;
+}

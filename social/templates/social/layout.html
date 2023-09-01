@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Postify</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+	<header class="main-head">
+		<nav class="main">
+			<h1 id="logo">Postify</h1>
+			{% if request.user.is_authenticated %}
+			<div class="greetings" style="text-align: center;">
+				<h2>Hi, {{ user.username }}!</h2>
+			</div>
+			{% endif %}
+			<ul>
+				{% if request.user.is_authenticated %}
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'register' %}">Register</a></li>
+					<li><a href="{% url 'login' %}">Login</a></l>
+				{% endif %}
+			</ul>
+		</nav>
+	</header>
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="notification {{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<!-------------------------------------
+					Navigation Bar 
+	-------------------------------------->
+	<div class="main">
+		
+		<nav class="second-nav">
+			<a class="feed" href="{% url 'feed' %}">Inicio</a>
+			{% if request.user.is_authenticated %}
+				<a class="profile" href="{% url 'profile' request.user.username %}">Mi Perfil</a>
+				<a class="new" href="{% url 'post' %}">Crear nuevo post</a>
+			{% else %}
+				{% if request.path != '/login/' and request.path != '/register/' %}
+					<a href="{% url 'login' %}" class="helpers-info">No estás logueado</a>
+				{% elif request.path == '/login/' %}
+					<a href="{% url 'register' %}" class="helpers-info">¿No tienes cuenta? Cree una</a>
+				{% elif request.path == '/register/' %}
+					<a href="{% url 'login' %}" class="helpers-info">¿Ya tienes cuenta? Inicie sesión</a>
+				{% endif %}
+			{% endif %}
+		</nav>
+
+
+		{% block content %}
+
+		{% endblock content %}
+
+
+
+	</div>
+
+	<footer>
+		<div class="row">
+			<p>&copy; Postify 2023</p>
+			<p>All rights reserved</p>
+		</div>
+	</footer>
+
+</body>
+</html>

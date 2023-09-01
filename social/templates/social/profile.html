@@ -1,0 +1,82 @@
+{% extends 'social/feed.html' %}
+{% block content %}
+
+<!-- Profile -->
+<div class="profile">
+	<img src="{{ user.profile.image.url }}">
+	<h2>@{{ user.username }}</h2>
+	{% if request.user.is_authenticated %}
+		{% if request.user.username != user.username %}
+			{% if user not in request.user.profile.following %}
+				<button><a class="follow-button" href="{% url 'follow' user %}">Follow</a></button>
+			{% else %}
+				<button><a class="follow-button" href="{% url 'unfollow' user %}">Unfollow</a></button>
+			{% endif %}
+		{% else %}
+			<button><a class="follow-button" href="{% url 'update_profile' %}">Editar Perfil</a></button>
+		{% endif %}
+	{% else %}
+		<button><a class="follow-button" href="{% url 'login' %}">Inicia sesión para interactuar con {{ user.username }}</a></button>
+	{% endif %}
+</div>
+
+<!-- Follow items -->
+<div class="follow">
+	<div>
+		<h5><a href="{% url 'profile' user.username %}">Posts</a></h5>
+		<p>{{ user.posts.count }}</p>
+	</div>
+	<div>
+		<h5><a href="{% url 'profile' user.username %}?followers">Followers</a></h5>
+		<p>{{ user.profile.followers.count }}</p>
+	</div>
+	<div>
+		<h5><a href="{% url 'profile' user.username %}?followings">Following</a></h5>
+		<p>{{ user.profile.following.count }}</p>
+	</div>
+</div>
+
+{% if show_followers %}
+	{% if user.profile.followers.count > 0 %}
+		{% for follower in user.profile.followers %}
+			<article>
+			    <div class="container-article">
+			        <img src="{{ follower.profile.image.url }}">
+			        <div style="display: flex; align-items: center;">
+			            <h2 class="username"><a href="{% url 'profile' follower.username %}">@{{ follower.username }}</a></h2>
+			        </div>
+			    </div>
+			</article>
+		{% endfor %}
+	{% else %}
+		{% if request.user.username != user.username %}
+			<h2 style="text-align: center;">{{ user.username }} no tiene seguidores</h2>
+		{% else %}
+			<h2 style="text-align: center;">No tienes seguidores</h2>
+		{% endif %}
+	{% endif %}
+{% elif show_followings %}
+	{% if user.profile.following.count > 0 %}
+		{% for following in user.profile.following %}
+			<article>
+				<div class="container-article">
+					<img src="{{ following.profile.image.url }}">
+					<div style="display: flex; align-items: center;">
+						<h2 class="username"><a href="{% url 'profile' following.username %}">@{{ following.username }}</a></h2>
+					</div>
+				</div>
+			</article>
+		{% endfor %}
+	{% else %}
+		{% if request.user.username != user.username %}
+			<h2 style="text-align: center;">{{ user.username }} no sigue a nadie</h2>
+		{% else %}
+			<h2 style="text-align: center;">No sigues a nadie</h2>
+		{% endif %}
+	{% endif %}
+{% else %}
+	{{ block.super }}
+{% endif %}
+
+<!-- block super -->
+{% endblock %}

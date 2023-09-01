@@ -1,0 +1,24 @@
+{% extends 'social/layout.html' %}
+{% load humanize %}
+{% block content %}
+
+{% for post in posts %}
+<article>
+    <div class="container-article">
+        <img src="{{ post.user.profile.image.url }}">
+        <div>
+            <h2 class="username"><a href="{% url 'profile' post.user.username %}">@{{ post.user.username }}</a></h2>
+            <time data-time="#">{{ post.timestamp | naturaltime }}</time>
+            <div class="post">{{ post.content }}</div>
+        </div>
+        {% if request.user not in post.likes.all %}
+            <a href="{% url 'like_post' post.id %}" class="like"><i class="fa-regular fa-heart"></i></a>
+        {% else %}
+            <a href="{% url 'like_post' post.id %}" class="like"><i class="fa-solid fa-heart fa-beat"></i></a>
+        {% endif %}
+        <span style="font-size: 14px; margin-top: 10px; margin-left: 10px;">{{ post.likes.count }}</span>
+    </div>
+</article>
+{% endfor %}
+
+{% endblock %}
